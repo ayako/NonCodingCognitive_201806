@@ -4,7 +4,7 @@ Cognitive Services は無料で試用できますが、予めサブスクリプ�
 
 方法は2通りあります。
 
-**[1. 30日間無料版](https://github.com/ayako/AAJP-EmotionBotHoL/blob/master/CognitiveSubscriptionTrial.md#1-30日間無料版の申し込み方法)**
+**[1. 7日間無料版](#1-7日間無料版の申し込み方法)**
 - [Cognitive Services の 試用申し込みサイト](https://azure.microsoft.com/ja-jp/try/cognitive-services/) から申込
 - Microsoft / LinkedIn / GitHub / Facebook いずれかのアカウント に紐づけ
 
@@ -14,7 +14,50 @@ Cognitive Services は無料で試用できますが、予めサブスクリプ�
 
 とにかく手軽に使ってみたい方は **1. 30日間無料版** を、これまでに Azure を使ったことがあって Azure サブスクリプションを持っている方は **2. Free Tier(F0)** がおススメです。
 
-今回のハンズオンでは **2. Free Tier(F0)** で申し込みを行います。
+今回のハンズオンでは 
+- PowerApps 編の方は **7日間無料版**
+- Logic Apps 編の方は **2. Free Tier(F0)**
+で申し込みを行います。
+
+# 1. 7日間無料版の申し込み方法
+
+## Microsoft アカウント または Microsoft365 (組織) アカウント
+サブスクリプションの申し込みに必要となりますので、持っていない場合は取得しておきます。
+
+>[Microsoft アカウント登録手続き](https://www.microsoft.com/ja-jp/msaccount/signup/default.aspx)
+
+## Cognitive Services サブスクリプション申し込み
+
+ブラウザから [microsoft.com/Cognitive](http://microsoft.com/Cognitive) にアクセスして Cognitive Services のページを開き、[Cognitive Services を無料で試す] をクリックします。
+
+![](/media/20180315_01.PNG)
+
+*Cognitive Services を試す* というページで、*Face API* の行にある [API キーの取得] をクリックします。
+
+![](/media/20180315_02.PNG)
+
+サービス要件を確認して ☑ (チェック) をつけ、国/地域 を選択、[次へ] をクリックします。
+
+![](/media/20180315_03.PNG)
+
+[サインインして API を作成する] の ダイアログから [Microsoft] をクリックして、Microsoft (or Microsoft365) アカウントでサインインします。
+
+![](/media/20180315_04.PNG)
+
+>サブスクリプション申し込み時に Email Verification (認証) が必要になる場合があります。メールに記載されている URL をクリックして認証が完了すると、次のステップに進めるようになります。
+
+><img width="300" src="/media/20161203_02.PNG">
+
+
+*正常にサブスクリプションに追加しました* と表示されたら完了です。
+
+*キー1* に記載されている文字列が サブスクリプション(API)キー になります。
+
+*エンドポイント* (Web API のアクセス URL) が表示されている場合は、**このキーはこちらの URL のみで有効です**。
+
+**キー** と **エンドポイント** の両方をコピーしてローカルに保存しておきます。
+
+![](/media/20180315_05.PNG)
 
 
 # 2. Azure Portal から Free Tier(F0) 無料プラン の申し込み方法
