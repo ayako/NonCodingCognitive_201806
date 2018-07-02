@@ -16,8 +16,12 @@ Azure Locig Apps を利用して、ノンコーディングで下記のフロー
 
 持っていない場合は無料評価版でOKですので取得しておきます。
 
->[Azure の無料サブスクリプションの申し込み方法](https://github.com/ayako/AAJP-EmotionBotHoL/blob/master/AzureSubscriptionTrial.md)  - Cognitive Services Text Analytics の API Key
-    - 
+>[Azure の無料サブスクリプションの申し込み方法](https://github.com/ayako/AAJP-EmotionBotHoL/blob/master/AzureSubscriptionTrial.md)
+
+#### Cognitive Services Text Analytics の API Key
+
+[Cognitive Services の無料サブスクリプションの申し込み方法: 2. Free Tier(F0)](https://github.com/ayako/NonCodingCognitive_201806/blob/master/CognitiveSubscriptionTrial.md#2-azure-portal-%E3%81%8B%E3%82%89-free-tierf0-%E7%84%A1%E6%96%99%E3%83%97%E3%83%A9%E3%83%B3-%E3%81%AE%E7%94%B3%E3%81%97%E8%BE%BC%E3%81%BF%E6%96%B9%E6%B3%95) の手順で **Text Analytics** のサービスを申し込み、API Key を取得しておきます。
+ 
 #### Office 365 アカウント (Office 365 Business Premium)
 
 Outlook Online, Excel Online, Sharepoint Online を使用します。持っていない場合は無料評価版でOKですので取得しておきます。
