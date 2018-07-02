@@ -12,8 +12,20 @@ Azure Locig Apps を利用して、ノンコーディングで下記のフロー
 
 ### 準備するもの
 
-- Azure サブスクリプション
-- Office 365 アカウント (Outlook, Excel, Sharepoint を使用します)
+#### Azure サブスクリプション
+
+持っていない場合は無料評価版でOKですので取得しておきます。
+
+>[Azure の無料サブスクリプションの申し込み方法](https://github.com/ayako/AAJP-EmotionBotHoL/blob/master/AzureSubscriptionTrial.md)  - Cognitive Services Text Analytics の API Key
+    - 
+#### Office 365 アカウント (Office 365 Business Premium)
+
+Outlook Online, Excel Online, Sharepoint Online を使用します。持っていない場合は無料評価版でOKですので取得しておきます。
+
+>[法人向け Office 365](https://products.office.com/ja-jp/compare-all-microsoft-office-products?tab=2)
+
+<br />
+<br />
 
 ## 手順
 
@@ -47,13 +59,112 @@ Azure Locig Apps を利用して、ノンコーディングで下記のフロー
 
 <img src="media/LogicApps_20180625_15.PNG" width="450" height="291">  
 
+<img src="media/LogicApps_20180625_16.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_17.PNG" width="450" height="291">  
+
 ### 3. メールの受信: Office 365 Outlook コネクターの設定
+
+<img src="media/LogicApps_20180625_18.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_19.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_20.PNG" width="450" height="291">  
+
 ### 4. メール本文の取り出し: Content Conversion (HTML to Text) コネクターの設定
+
+<img src="media/LogicApps_20180625_21.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_22.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_23.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_24.PNG" width="450" height="291">  
+
 ### 5. メール件名による条件分岐
+
+<img src="media/LogicApps_20180625_25.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_26.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_27.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_28.PNG" width="450" height="291">  
+
 ### 6. メール本文のネガポジ判別(1): Microsoft Translator コネクターの設定
+
+<img src="media/LogicApps_20180625_29.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_30.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_31.PNG" width="450" height="291">  
+
 ### 7. メール本文のネガポジ判別(2): テキスト分析 (Text analytics) コネクターの設定
+
+<img src="media/LogicApps_20180625_32.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_33.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_34.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_35.PNG" width="450" height="291">  
+
 ### 8. ネガポジ判定による条件分岐
+
+<img src="media/LogicApps_20180625_36.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_37.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_38.PNG" width="450" height="291">  
+
 ### 9. ネガ判定時のアクション設定(1): メール送信
+
+<img src="media/LogicApps_20180625_39.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_40.PNG" width="450" height="291">  
+
 ### 10. ネガ判定時のアクション設定(2): DB 保存
+
+<img src="media/LogicApps_20180625_41.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_42.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_43.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_44.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_45.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_46.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_47.PNG" width="450" height="291">  
+
 ### 11. ポジ判定時のアクション設定
+
+<img src="media/LogicApps_20180625_48.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_49.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_50.PNG" width="450" height="291">  
+
 ### 12. Logic Apps の実行テスト
+
+<img src="media/LogicApps_20180625_51.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_61.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_62.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_63.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_64.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_65.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_66.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_67.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_68.PNG" width="450" height="291">  
+
+
