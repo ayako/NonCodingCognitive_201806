@@ -10,9 +10,43 @@ Azure Locig Apps を利用して、ノンコーディングで下記のフロー
   - お問い合わせに対して自動で受付返答メールを送信
   - お問い合わせメールの内容をお問い合わせメール DB (Sharepoint に保存した Excel ファイル)  に保存
 
+### 準備するもの
+
+- Azure サブスクリプション
+- Office 365 アカウント (Outlook, Excel, Sharepoint を使用します)
+
+## 手順
 
 ### 1. メール内容保存 DB (Excel ファイル) の作成
+
+<img src="media/LogicApps_20180625_01.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_02.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_03.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_04.PNG" width="450" height="291">
+
+<img src="media/LogicApps_20180625_05.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_06.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_07.PNG" width="450" height="291">
+
+<img src="media/LogicApps_20180625_08.PNG" width="450" height="291">  
+
 ### 2. Azure Logic Apps の新規アプリ作成
+
+<img src="media/LogicApps_20180625_11.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_12.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_13.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_14.PNG" width="450" height="291">  
+
+<img src="media/LogicApps_20180625_15.PNG" width="450" height="291">  
+
 ### 3. メールの受信: Office 365 Outlook コネクターの設定
 ### 4. メール本文の取り出し: Content Conversion (HTML to Text) コネクターの設定
 ### 5. メール件名による条件分岐
