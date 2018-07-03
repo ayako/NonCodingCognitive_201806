@@ -127,9 +127,9 @@ A1~E1 のセルを選択し、ツールバーの **テーブルとして書式�
 
 検索欄に **html** と入力し、**Content Conversion - Html to text** をクリックして選択します。
 
-<img src="media/LogicApps_20180625_22.PNG" width="450" height="291">  
-
 >受信するメールが html 形式の場合を考慮し、本文を Plain text として抽出するためのステップです。 
+
+<img src="media/LogicApps_20180625_22.PNG" width="450" height="291">  
 
 *Html to text* のアクション詳細設定で、*Content* の欄をクリックします。
 
@@ -144,87 +144,229 @@ A1~E1 のセルを選択し、ツールバーの **テーブルとして書式�
 
 ### 5. メール件名による条件分岐
 
+[＋新しいステップ] をクリック、[条件の追加] をクリックして、条件分岐を追加します。
+
 <img src="media/LogicApps_20180625_25.PNG" width="450" height="291">  
+
+条件の詳細設定と、条件に対して True の場合 と False の場合の条件分岐が設定されます。
 
 <img src="media/LogicApps_20180625_26.PNG" width="450" height="291">  
 
+条件の詳細設定で、左欄の値に 動的コンテンツから **件名** をクリックして設定、条件として **次の値を含む** を選択、右欄の値に **お問い合わせ** と入力して、メールの件名に "お問い合わせ" を含む場合、という条件を設定します。
+
+その後、[**＋追加**] をクリックして **行の追加** を選択して条件を追加します。
+
 <img src="media/LogicApps_20180625_27.PNG" width="450" height="291">  
+
+同様に **件名**　に "お問合せ" や　"問合せ" といった文言を含む場合、という条件を設定します。
 
 <img src="media/LogicApps_20180625_28.PNG" width="450" height="291">  
 
+<br />
+
+
 ### 6. メール本文のネガポジ判別(1): Microsoft Translator コネクターの設定
+
+条件が True の場合のアクションを設定します。アクションの検索欄に **翻訳** と入力し、**Microsoft Translator - テキストの翻訳** をクリックします。
 
 <img src="media/LogicApps_20180625_29.PNG" width="450" height="291">  
 
+*テキストの翻訳* のアクション詳細設定で、**テキスト** には 動的コンテンツから *Html to Text* コネクターで抽出された **The plain text content** をクリックして選択します。**対象言語** は **English** を選択し、**詳細オプションを表示する** をクリックして詳細を設定します。
+
+> ネガポジ分析を行う上て、より精度の高い英語で分析するため、一旦メール本文を英語に翻訳します。
+
 <img src="media/LogicApps_20180625_30.PNG" width="450" height="291">  
+
+**カテゴリ** に **generalnn** と入力します。
+
+>Translator API の仕様で、Neural Network を使った翻訳を行うオプションを設定しています。
 
 <img src="media/LogicApps_20180625_31.PNG" width="450" height="291">  
 
+<br />
+
+
 ### 7. メール本文のネガポジ判別(2): テキスト分析 (Text analytics) コネクターの設定
 
+[**アクションの追加**] をクリックして、次のアクションを追加します。アクションの検索欄に **テキスト** と入力します。
+
+<img src="media/LogicApps_20180625_31.PNG" width="450" height="291">  
 <img src="media/LogicApps_20180625_32.PNG" width="450" height="291">  
+
+次のアクションとして、**テキスト分析 - 感情の抽出** を選択します。
 
 <img src="media/LogicApps_20180625_33.PNG" width="450" height="291">  
 
+*テキスト分析 - 感情の抽出* アクションの設定で以下の情報を入力します。
+
+- **接続名** : Text Analytics
+- **アカウントキー** : Text Analytics の API Key
+- **サイトのURL** : Text Analytics 申込時にロケーションに West US を選択した場合は未入力でOK、それ以外の場合は https://ロケーション名.api.cognitive.microsoft.com と入力
+
+[作成] をクリックして、*感情の抽出* アクションを作成します。
+
 <img src="media/LogicApps_20180625_34.PNG" width="450" height="291">  
+
+*テキスト分析 - 感情の抽出* アクションの詳細設定で、**テキスト** には 動的コンテンツから **翻訳されたテキスト** をクリックして選択します。
+
+>*翻訳* アクションで英語に翻訳したメール本文を、*感情の抽出* アクションでネガポジ分析します。
 
 <img src="media/LogicApps_20180625_35.PNG" width="450" height="291">  
 
+<br />
+
+
 ### 8. ネガポジ判定による条件分岐
+
+Text Analytics API では、ネガティブ(0)~ニュートラル(0.5)~ポジティブ(1) として、0~1の間の数値でネガポジ分析結果が返されます。
+メール本文のネガポジ分析の結果、0.3未満 (ネガティブの可能性が高い) メールについては、それに対応したメールを自動送信し、問い合わせ DB にメールの内容とネガポジ分析結果を保存します。
+
+*感情の検出* アクションの直後、**さらに追加**　をクリックした後 **条件の追加** をクリックして条件分岐を追加します。
 
 <img src="media/LogicApps_20180625_36.PNG" width="450" height="291">  
 
+条件の左欄には動的コンテンツから *感情の抽出* アクションで取得した **スコア** を選択します。
+
 <img src="media/LogicApps_20180625_37.PNG" width="450" height="291">  
+
+条件は **次の値未満**、条件の右欄には **0.3** と入力します。
 
 <img src="media/LogicApps_20180625_38.PNG" width="450" height="291">  
 
+<br />
+
+
 ### 9. ネガ判定時のアクション設定(1): メール送信
+
+条件が True (*感情の抽出* アクションのスコアが 0.3 未満) の場合のアクションを追加します。
+
+アクションの選択の検索欄に **outlook** と入力し、**Office 365 Outlook - メールの送信** を選択、メール自動送信を行うアカウントでサインインします。
 
 <img src="media/LogicApps_20180625_39.PNG" width="450" height="291">  
 
+*メールの送信* アクションの詳細設定で、下記の通り設定します。
+
+- **宛先** : 動的コンテンツから **差出人** を選択
+- **件名** : お問い合わせ有難うございました (他、お好きな件名を入力します)
+- **本文** : (お好きな内容を入力します)
+
 <img src="media/LogicApps_20180625_40.PNG" width="450" height="291">  
+
+<br />
+
 
 ### 10. ネガ判定時のアクション設定(2): DB 保存
 
+*メールの送信* アクションの直後、[**アクションの追加**] をクリックしてアクションを追加します。
+
 <img src="media/LogicApps_20180625_41.PNG" width="450" height="291">  
+
+アクションの検索欄に **excel** と入力、**Excel Online Business** を選択します。
 
 <img src="media/LogicApps_20180625_42.PNG" width="450" height="291">  
 
+**Excel Online (Business)** のアクション一覧から **Excel Online (Business) - Add a row into a table** を選択します。
+
 <img src="media/LogicApps_20180625_43.PNG" width="450" height="291">  
+
+*Add a row into a table* アクションの詳細設定で、以下を設定します。
+
+- **Location** : OneDrive for Business
+- **Document Library** : OneDrive
+- **File** : お問い合わせ DB (1. で作成したExcelファイル) を選択します
+- **Table** : お問い合わせ DB (1. で作成したExcelファイル) のテーブルを選択します。
 
 <img src="media/LogicApps_20180625_44.PNG" width="450" height="291">  
 
+Excel ファイルのテーブルが読み込まれると、テーブルの見出しが自動で読み込まれて表示されます。
+
 <img src="media/LogicApps_20180625_45.PNG" width="450" height="291">  
+
+以下の内容を設定します。
+
+- **受信日時** : 動的コンテンツから **受信日時**
+- **メールアドレス** : 動的コンテンツから **差出人**
+- **メール内容** : 動的コンテンツから **The plain text content**
+- **スコア** : 動的コンテンツから **スコア**
+- **クレーム** : high
 
 <img src="media/LogicApps_20180625_46.PNG" width="450" height="291">  
 
 <img src="media/LogicApps_20180625_47.PNG" width="450" height="291">  
 
+<br />
+
+
 ### 11. ポジ判定時のアクション設定
+
+メール本文のネガポジ分析のスコアが 0.3 以上の場合は、通常対応のメールを自動送信し、問い合わせ DB にメールの内容とネガポジ分析結果を保存します。ネガ判定時の場合と同様の設定を行います。
+
+**アクションの追加** をクリックして、**Office 365 Outlook - メールの送信** を選択、詳細設定で以下の内容を設定します。
+
+- **宛先** : 動的コンテンツから 差出人 を選択
+- **件名** : お問い合わせ有難うございました (他、ネガ判定とは異なるお好きな件名を入力します)
+- **本文** : (ネガ判定とは異なるお好きな内容を入力します) 
 
 <img src="media/LogicApps_20180625_48.PNG" width="450" height="291">  
 
 <img src="media/LogicApps_20180625_49.PNG" width="450" height="291">  
 
+**アクションの追加** をクリックして、**Office 365 Outlook - メールの送信** を選択、詳細設定で以下の内容を設定します。
+
+- **Location** : OneDrive for Business
+- **Document Library** : OneDrive
+- **File** : お問い合わせ DB (1. で作成したExcelファイル) を選択します
+- **Table** : お問い合わせ DB (1. で作成したExcelファイル) のテーブルを選択します
+- **受信日時** : 動的コンテンツから 受信日時
+- **メールアドレス** : 動的コンテンツから 差出人
+- **メール内容** : 動的コンテンツから The plain text content
+- **スコア** : 動的コンテンツから スコア
+- **クレーム** : low
+
 <img src="media/LogicApps_20180625_50.PNG" width="450" height="291">  
 
-### 12. Logic Apps の実行テスト
+これでフローの設定は完了です。最終的なフローは以下のようになります。
 
 <img src="media/LogicApps_20180625_51.PNG" width="450" height="291">  
 
+
+<br />
+
+
+### 12. Logic Apps の実行テスト
+
+設定した Logic App アプリのフローを確認するため、アプリを実行して、問い合わせメールを送信、動作を確認します。
+
+Logic Apps デザイナー のツールバー の **▶実行** をクリックします。
+
 <img src="media/LogicApps_20180625_61.PNG" width="450" height="291">  
+
+メール受信待ちになったら、問い合わせメールを送信します。
 
 <img src="media/LogicApps_20180625_62.PNG" width="450" height="291">  
 
+Outlook のアドレス宛に、それ以外のメールアドレスからメールを送信します。
+
+- 件名 : お問い合わせ
+- 盆分 : 困っています。至急連絡ください (その他、ネガ判定となりそうな文章を入力)
+
 <img src="media/LogicApps_20180625_63.PNG" width="450" height="291">  
+
+メールが受信されてしばらくしてフローに設定されたアクションが行われ、成功したアクションには 緑色のチェックマーク (✓) が表示されます。
 
 <img src="media/LogicApps_20180625_64.PNG" width="450" height="291">  
 
+チェックマーク (✓) が表示されているアクションをクリックすると、アクションの入出力値が確認できます。
+
 <img src="media/LogicApps_20180625_65.PNG" width="450" height="291">  
+
+無事フローが終了すると、メールを送信したアドレスに自動返答メールが送られ、また、問い合わせ DB (Excel ファイル) に内容が入力されているのを確認してください。
 
 <img src="media/LogicApps_20180625_66.PNG" width="450" height="291">  
 
 <img src="media/LogicApps_20180625_67.PNG" width="450" height="291">  
+
+フローの動作確認が終了したら、不要な課金などを避けるため、Logic App の設定で **無効** をクリックして、フローの稼働を止めておきます。(再度稼働させる場合は、**有効** をクリックして稼働可能な状態に戻します。)
 
 <img src="media/LogicApps_20180625_68.PNG" width="450" height="291">  
 
