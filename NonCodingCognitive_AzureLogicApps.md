@@ -188,39 +188,106 @@ A1~E1 のセルを選択し、ツールバーの **テーブルとして書式�
 
 ### 7. メール本文のネガポジ判別(2): テキスト分析 (Text analytics) コネクターの設定
 
+[**アクションの追加**] をクリックして、次のアクションを追加します。アクションの検索欄に **テキスト** と入力します。
+<img src="media/LogicApps_20180625_31.PNG" width="450" height="291">  
 <img src="media/LogicApps_20180625_32.PNG" width="450" height="291">  
+
+次のアクションとして、**テキスト分析 - 感情の抽出** を選択します。
 
 <img src="media/LogicApps_20180625_33.PNG" width="450" height="291">  
 
+*テキスト分析 - 感情の抽出* アクションの設定で以下の情報を入力します。
+
+- **接続名** : Text Analytics
+- **アカウントキー** : Text Analytics の API Key
+- **サイトのURL** : Text Analytics 申込時にロケーションに West US を選択した場合は未入力でOK、それ以外の場合は https://ロケーション名.api.cognitive.microsoft.com と入力
+
+[作成] をクリックして、*感情の抽出* アクションを作成します。
+
 <img src="media/LogicApps_20180625_34.PNG" width="450" height="291">  
+
+*テキスト分析 - 感情の抽出* アクションの詳細設定で、**テキスト** には 動的コンテンツから **翻訳されたテキスト** をクリックして選択します。
+
+>*翻訳* アクションで英語に翻訳したメール本文を、*感情の抽出* アクションでネガポジ分析します。
 
 <img src="media/LogicApps_20180625_35.PNG" width="450" height="291">  
 
+<br />
+
+
 ### 8. ネガポジ判定による条件分岐
+
+Text Analytics API では、ネガティブ(0)~ニュートラル(0.5)~ポジティブ(1) として、0~1の間の数値でネガポジ分析結果が返されます。
+メール本文のネガポジ分析の結果、0.3未満 (ネガティブの可能性が高い) メールについては、それに対応したメールを自動送信し、問い合わせ DB にメールの内容とネガポジ分析結果を保存します。
+
+*感情の検出* アクションの直後、**さらに追加**　をクリックした後 **条件の追加** をクリックして条件分岐を追加します。
 
 <img src="media/LogicApps_20180625_36.PNG" width="450" height="291">  
 
+条件の左欄には動的コンテンツから *感情の抽出* アクションで取得した **スコア** を選択します。
+
 <img src="media/LogicApps_20180625_37.PNG" width="450" height="291">  
+
+条件は **次の値未満**、条件の右欄には **0.3** と入力します。
 
 <img src="media/LogicApps_20180625_38.PNG" width="450" height="291">  
 
+<br />
+
+
 ### 9. ネガ判定時のアクション設定(1): メール送信
+
+条件が True (*感情の抽出* アクションのスコアが 0.3 未満) の場合のアクションを追加します。
+
+アクションの選択の検索欄に **outlook** と入力し、**Office 365 Outlook - メールの送信** を選択、メール自動送信を行うアカウントでサインインします。
 
 <img src="media/LogicApps_20180625_39.PNG" width="450" height="291">  
 
+*メールの送信* アクションの詳細設定で、下記の通り設定します。
+
+- **宛先** : 動的コンテンツから **差出人** を選択
+- **件名** : お問い合わせ有難うございました (他、お好きな件名を入力します)
+- **本文** : (お好きな内容を入力します)
+
 <img src="media/LogicApps_20180625_40.PNG" width="450" height="291">  
+
+<br />
+
 
 ### 10. ネガ判定時のアクション設定(2): DB 保存
 
+*メールの送信* アクションの直後、[**アクションの追加**] をクリックしてアクションを追加します。
+
 <img src="media/LogicApps_20180625_41.PNG" width="450" height="291">  
+
+アクションの検索欄に **excel** と入力、**Excel Online Business** を選択します。
 
 <img src="media/LogicApps_20180625_42.PNG" width="450" height="291">  
 
+**Excel Online (Business)** のアクション一覧から **Excel Online (Business) - Add a row into a table** を選択します。
+
 <img src="media/LogicApps_20180625_43.PNG" width="450" height="291">  
+
+*Add a row into a table* アクションの詳細設定で、以下を設定します。
+
+- **Location** : OneDrive for Business
+- **Document Library** : OneDrive
+- **File** : お問い合わせ DB (1. で作成したExcelファイル) を選択します
+- **Table** : お問い合わせ DB (1. で作成したExcelファイル) のテーブルを選択します。
 
 <img src="media/LogicApps_20180625_44.PNG" width="450" height="291">  
 
+Excel ファイルのテーブルが読み込まれると、テーブルの見出しが自動で読み込まれて表示されます。
+
 <img src="media/LogicApps_20180625_45.PNG" width="450" height="291">  
+
+以下の内容を設定します。
+
+- **受信日時** : 動的コンテンツから **受信日時**
+- **メールアドレス** : 動的コンテンツから **差出人**
+- **メール内容** : 動的コンテンツから **The plain text content**
+- **スコア** : 動的コンテンツから **スコア**
+- **クレーム** : 高い
 
 <img src="media/LogicApps_20180625_46.PNG" width="450" height="291">  
 
