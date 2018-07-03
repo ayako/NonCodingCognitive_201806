@@ -127,9 +127,9 @@ A1~E1 のセルを選択し、ツールバーの **テーブルとして書式�
 
 検索欄に **html** と入力し、**Content Conversion - Html to text** をクリックして選択します。
 
-<img src="media/LogicApps_20180625_22.PNG" width="450" height="291">  
-
 >受信するメールが html 形式の場合を考慮し、本文を Plain text として抽出するためのステップです。 
+
+<img src="media/LogicApps_20180625_22.PNG" width="450" height="291">  
 
 *Html to text* のアクション詳細設定で、*Content* の欄をクリックします。
 
@@ -144,21 +144,47 @@ A1~E1 のセルを選択し、ツールバーの **テーブルとして書式�
 
 ### 5. メール件名による条件分岐
 
+[＋新しいステップ] をクリック、[条件の追加] をクリックして、条件分岐を追加します。
+
 <img src="media/LogicApps_20180625_25.PNG" width="450" height="291">  
+
+条件の詳細設定と、条件に対して True の場合 と False の場合の条件分岐が設定されます。
 
 <img src="media/LogicApps_20180625_26.PNG" width="450" height="291">  
 
+条件の詳細設定で、左欄の値に 動的コンテンツから **件名** をクリックして設定、条件として **次の値を含む** を選択、右欄の値に **お問い合わせ** と入力して、メールの件名に "お問い合わせ" を含む場合、という条件を設定します。
+
+その後、[**＋追加**] をクリックして **行の追加** を選択して条件を追加します。
+
 <img src="media/LogicApps_20180625_27.PNG" width="450" height="291">  
+
+同様に **件名**　に "お問合せ" や　"問合せ" といった文言を含む場合、という条件を設定します。
 
 <img src="media/LogicApps_20180625_28.PNG" width="450" height="291">  
 
+<br />
+
+
 ### 6. メール本文のネガポジ判別(1): Microsoft Translator コネクターの設定
+
+条件が True の場合のアクションを設定します。アクションの検索欄に **翻訳** と入力し、**Microsoft Translator - テキストの翻訳** をクリックします。
 
 <img src="media/LogicApps_20180625_29.PNG" width="450" height="291">  
 
+*テキストの翻訳* のアクション詳細設定で、**テキスト** には 動的コンテンツから *Html to Text* コネクターで抽出された **The plain text content** をクリックして選択します。**対象言語** は **English** を選択し、**詳細オプションを表示する** をクリックして詳細を設定します。
+
+> ネガポジ分析を行う上て、より精度の高い英語で分析するため、一旦メール本文を英語に翻訳します。
+
 <img src="media/LogicApps_20180625_30.PNG" width="450" height="291">  
 
+**カテゴリ** に **generalnn** と入力します。
+
+>Translator API の仕様で、Neural Network を使った翻訳を行うオプションを設定しています。
+
 <img src="media/LogicApps_20180625_31.PNG" width="450" height="291">  
+
+<br />
+
 
 ### 7. メール本文のネガポジ判別(2): テキスト分析 (Text analytics) コネクターの設定
 
