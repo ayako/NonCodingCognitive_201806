@@ -324,28 +324,48 @@ Excel ファイルのテーブルが読み込まれると、テーブルの見�
 
 <img src="media/LogicApps_20180625_50.PNG" width="450" height="291">  
 
+これでフローの設定は完了うです。最終的なフローは以下のようになります。
+
+<img src="media/LogicApps_20180625_51.PNG" width="450" height="291">  
+
+
 <br />
 
 
 ### 12. Logic Apps の実行テスト
 
-最終的なフローは以下のようになります。
-<img src="media/LogicApps_20180625_51.PNG" width="450" height="291">  
+設定した Logic App アプリのフローを確認するため、アプリを実行して、問い合わせメールを送信、動作を確認します。
 
+Logic Apps デザイナー のツールバー の **▶実行** をクリックします。
 
 <img src="media/LogicApps_20180625_61.PNG" width="450" height="291">  
 
+メール受信待ちになったら、問い合わせメールを送信します。
+
 <img src="media/LogicApps_20180625_62.PNG" width="450" height="291">  
+
+Outlook のアドレス宛に、それ以外のメールアドレスからメールを送信します。
+
+- 件名 : お問い合わせ
+- 盆分 : 困っています。至急連絡ください (その他、ネガ判定となりそうな文章を入力)
 
 <img src="media/LogicApps_20180625_63.PNG" width="450" height="291">  
 
+メールが受信されてしばらくしてフローに設定されたアクションが行われ、成功したアクションには 緑色のチェックマーク (✓) が表示されます。
+
 <img src="media/LogicApps_20180625_64.PNG" width="450" height="291">  
 
+チェックマーク (✓) が表示されているアクションをクリックすると、アクションの入出力値が確認できます。
+
 <img src="media/LogicApps_20180625_65.PNG" width="450" height="291">  
+
+無事フローが終了すると、メールを送信したアドレスに自動返答メールが送られ、また、問い合わせ DB (Excel ファイル) に内容が入力されているのを確認してください。
 
 <img src="media/LogicApps_20180625_66.PNG" width="450" height="291">  
 
 <img src="media/LogicApps_20180625_67.PNG" width="450" height="291">  
+
+フローの動作確認が終了したら、不要な課金などを避けるため、Logic App の設定で **無効** をクリックして、フローの稼働を止めておきます。(再度稼働させる場合は、**有効** をクリックして稼働可能な状態に戻します。)
 
 <img src="media/LogicApps_20180625_68.PNG" width="450" height="291">  
 
