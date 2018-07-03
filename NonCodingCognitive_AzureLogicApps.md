@@ -30,26 +30,44 @@ Outlook Online, Excel Online, Sharepoint Online を使用します。持って�
 
 <br />
 <br />
-
+　
 ## 手順
 
 ### 1. メール内容保存 DB (Excel ファイル) の作成
 
+[Office Online のサイト](https://www.office.com) にアクセスしてログインします。
+
 <img src="media/LogicApps_20180625_01.PNG" width="450" height="291">  
+
+最初にお問い合わせメールを保存する Sharepoint サイトを作成し、その中に Excel ファイルを作成して、お問い合わせメール DB として利用します。
+
+お問い合わせ DB となる Excel を作成します。 Office Online のホーム画面 から **Excel** をクリックして、**新しい空白のブック** をクリックして作成します。
 
 <img src="media/LogicApps_20180625_02.PNG" width="450" height="291">  
 
+Excel ブック の Sheet1 の 1 行目 A1~E1 のセル に **受信日時** **メールアドレス** **メール内容** **スコア** **クレーム** と入力します 
+
 <img src="media/LogicApps_20180625_03.PNG" width="450" height="291">  
 
+A1~E1 のセルを選択し、ツールバーの **テーブルとして書式設定** をクリックします。
+
 <img src="media/LogicApps_20180625_04.PNG" width="450" height="291">
+
+*先頭行をテーブルの見出しとして設定する* にチェックをつけて、[**OK**] をクリック、テーブルの設定を行います。
 
 <img src="media/LogicApps_20180625_05.PNG" width="450" height="291">  
 
 <img src="media/LogicApps_20180625_06.PNG" width="450" height="291">  
 
+ツールバーの **ファイル** > **名前を付けて保存** をクリックして、**名前を付けて保存** をクリックします。
+
 <img src="media/LogicApps_20180625_07.PNG" width="450" height="291">
 
+**LogicApps-HandsOn** という名前を付けてExcelブックを保存します。これで、お問い合わせメール DB としての設定が完了です。
+
 <img src="media/LogicApps_20180625_08.PNG" width="450" height="291">  
+
+
 
 ### 2. Azure Logic Apps の新規アプリ作成
 
