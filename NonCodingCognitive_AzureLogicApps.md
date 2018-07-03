@@ -69,21 +69,28 @@ A1~E1 のセルを選択し、ツールバーの **テーブルとして書式�
 
 ### 2. Azure Logic Apps の新規アプリ作成
 
+[Azure Portal](https://portal.azure.com) をブラウザーで開き、Azure サブスクリプションを申し込んだアカウントでサインインします。
 <img src="media/LogicApps_20180625_11.PNG" width="450" height="291">  
 
+**+リソースの作成** をクリックして、検索欄に **Logic App** と入力して、Logic Apps を検索、一覧から **Logic App** をクリックし、*Logic App* ペイン で [**作成**] をクリックして、新規作成手順に進みます。
 <img src="media/LogicApps_20180625_12.PNG" width="450" height="291">  
 
+*ロジック アプリの作成* ペインで、*名前* にお好みの名前を入力し、*リソースグループ* は **新規作成** を選択してお好みのグループ名を入力します。[**作成**] をクリックして、Logic Apps アプリを作成します。
 <img src="media/LogicApps_20180625_13.PNG" width="450" height="291">  
 
+*作成が完了しました* というメッセージが表示されたら、クリックして、作成した Logic Apps アプリを表示します。
 <img src="media/LogicApps_20180625_14.PNG" width="450" height="291">  
 
+自動で表示される (または Logic Apps アプリ のメニューから **ロジックアプリデザイナー** をクリック)、*ロジックアプリデザイナー* からロジックの作成を行います。
 <img src="media/LogicApps_20180625_15.PNG" width="450" height="291">  
 
+### 3. メールの受信: Office 365 Outlook コネクターの設定
+
+*Logic Apps デザイナー* 画面を下にスクロールして、*テンプレート* を表示、**空のロジックアプリ** をクリックします。
 <img src="media/LogicApps_20180625_16.PNG" width="450" height="291">  
 
 <img src="media/LogicApps_20180625_17.PNG" width="450" height="291">  
 
-### 3. メールの受信: Office 365 Outlook コネクターの設定
 
 <img src="media/LogicApps_20180625_18.PNG" width="450" height="291">  
 
