@@ -8,7 +8,7 @@ Azure Locig Apps を利用して、ノンコーディングで下記のフロー
 - メールを受信したら、メール件名からお問い合わせメールを判別
 - Cognitive Services Text Analytics API を利用した Sentiment(ネガポジ)分析を行い、
   - お問い合わせに対して自動で受付返答メールを送信
-  - お問い合わせメールの内容をお問い合わせメール DB (Sharepoint に保存した Excel ファイル)  に保存
+  - お問い合わせメールの内容をお問い合わせメール DB (OneDrive に保存した Excel ファイル)  に保存
 
 ### 準備するもの
 
@@ -24,7 +24,7 @@ Azure Locig Apps を利用して、ノンコーディングで下記のフロー
  
 #### Office 365 アカウント (Office 365 Business Premium)
 
-Outlook Online, Excel Online, Sharepoint Online を使用します。持っていない場合は無料評価版でOKですので取得しておきます。
+Outlook Online, Excel Online を使用します。持っていない場合は無料評価版でOKですので取得しておきます。
 
 >[法人向け Office 365](https://products.office.com/ja-jp/compare-all-microsoft-office-products?tab=2)
 
@@ -39,9 +39,7 @@ Outlook Online, Excel Online, Sharepoint Online を使用します。持って�
 
 <img src="media/LogicApps_20180625_01.PNG" width="450" height="291">  
 
-最初にお問い合わせメールを保存する Sharepoint サイトを作成し、その中に Excel ファイルを作成して、お問い合わせメール DB として利用します。
-
-お問い合わせ DB となる Excel を作成します。 Office Online のホーム画面 から **Excel** をクリックして、**新しい空白のブック** をクリックして作成します。
+最初にお問い合わせ DB となる Excel を作成します。 Office Online のホーム画面 から **Excel** をクリックして、**新しい空白のブック** をクリックして作成します。
 
 <img src="media/LogicApps_20180625_02.PNG" width="450" height="291">  
 
