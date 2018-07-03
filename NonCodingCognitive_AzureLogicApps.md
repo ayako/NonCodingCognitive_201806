@@ -108,11 +108,11 @@ A1~E1 のセルを選択し、ツールバーの **テーブルとして書式�
 
 <img src="media/LogicApps_20180625_18.PNG" width="450" height="291">  
 
-*Office 365 Outlook - 新しいメールが届いたとき* のステップで、トリガーとなる Office 365 Outlook のアカウントを設定するため、[**サインイン**] をクリックして、該当するアカウントの情報でサインインを行います。
+*Office 365 Outlook - 新しいメールが届いたとき* のアクションで、トリガーとなる Office 365 Outlook のアカウントを設定するため、[**サインイン**] をクリックして、該当するアカウントの情報でサインインを行います。
 
 <img src="media/LogicApps_20180625_19.PNG" width="450" height="291">  
 
-*Office 365 Outlook - 新しいメールが届いたとき* のステップの詳細設定で、メールを確認する頻度を設定します。ここではテストを行いやすくするため、感覚を **1分** に設定します。
+*Office 365 Outlook - 新しいメールが届いたとき* のアクション詳細設定で、メールを確認する頻度を設定します。ここではテストを行いやすくするため、間隔を **1分** に設定します。
 
 <img src="media/LogicApps_20180625_20.PNG" width="450" height="291">  
 
@@ -121,13 +121,26 @@ A1~E1 のセルを選択し、ツールバーの **テーブルとして書式�
 
 ### 4. メール本文の取り出し: Content Conversion (HTML to Text) コネクターの設定
 
+[**＋新しいステップ**] をクリック、[**アクションの追加**] をクリックして、次のアクションを追加します。
+
 <img src="media/LogicApps_20180625_21.PNG" width="450" height="291">  
+
+検索欄に **html** と入力し、**Content Conversion - Html to text** をクリックして選択します。
 
 <img src="media/LogicApps_20180625_22.PNG" width="450" height="291">  
 
+>受信するメールが html 形式の場合を考慮し、本文を Plain text として抽出するためのステップです。 
+
+*Html to text* のアクション詳細設定で、*Content* の欄をクリックします。
+
 <img src="media/LogicApps_20180625_23.PNG" width="450" height="291">  
 
+表示される *動的コンテンツ* 一覧から **本文** をクリックして、*Content* に設定します。
+
 <img src="media/LogicApps_20180625_24.PNG" width="450" height="291">  
+
+<br />
+
 
 ### 5. メール件名による条件分岐
 
