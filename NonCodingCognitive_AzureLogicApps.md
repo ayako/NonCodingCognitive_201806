@@ -287,23 +287,51 @@ Excel ファイルのテーブルが読み込まれると、テーブルの見�
 - **メールアドレス** : 動的コンテンツから **差出人**
 - **メール内容** : 動的コンテンツから **The plain text content**
 - **スコア** : 動的コンテンツから **スコア**
-- **クレーム** : 高い
+- **クレーム** : high
 
 <img src="media/LogicApps_20180625_46.PNG" width="450" height="291">  
 
 <img src="media/LogicApps_20180625_47.PNG" width="450" height="291">  
 
+<br />
+
+
 ### 11. ポジ判定時のアクション設定
+
+メール本文のネガポジ分析のスコアが 0.3 以上の場合は、通常対応のメールを自動送信し、問い合わせ DB にメールの内容とネガポジ分析結果を保存します。ネガ判定時の場合と同様の設定を行います。
+
+**アクションの追加** をクリックして、**Office 365 Outlook - メールの送信** を選択、詳細設定で以下の内容を設定します。
+
+- **宛先** : 動的コンテンツから 差出人 を選択
+- **件名** : お問い合わせ有難うございました (他、ネガ判定とは異なるお好きな件名を入力します)
+- **本文** : (ネガ判定とは異なるお好きな内容を入力します) 
 
 <img src="media/LogicApps_20180625_48.PNG" width="450" height="291">  
 
 <img src="media/LogicApps_20180625_49.PNG" width="450" height="291">  
 
+**アクションの追加** をクリックして、**Office 365 Outlook - メールの送信** を選択、詳細設定で以下の内容を設定します。
+
+- **Location** : OneDrive for Business
+- **Document Library** : OneDrive
+- **File** : お問い合わせ DB (1. で作成したExcelファイル) を選択します
+- **Table** : お問い合わせ DB (1. で作成したExcelファイル) のテーブルを選択します
+- **受信日時** : 動的コンテンツから 受信日時
+- **メールアドレス** : 動的コンテンツから 差出人
+- **メール内容** : 動的コンテンツから The plain text content
+- **スコア** : 動的コンテンツから スコア
+- **クレーム** : low
+
 <img src="media/LogicApps_20180625_50.PNG" width="450" height="291">  
+
+<br />
+
 
 ### 12. Logic Apps の実行テスト
 
+最終的なフローは以下のようになります。
 <img src="media/LogicApps_20180625_51.PNG" width="450" height="291">  
+
 
 <img src="media/LogicApps_20180625_61.PNG" width="450" height="291">  
 
