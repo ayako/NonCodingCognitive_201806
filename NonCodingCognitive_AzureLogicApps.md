@@ -1,4 +1,4 @@
-# Cognitive Services 活用! Microsoft PowerApps & Flow / Azure Locig Apps によるノンコーディング開発 
+# Cognitive Services 活用! Microsoft PowerApps & Flow / Azure Logic Apps によるノンコーディング開発 
 
 ## Azure Logic Apps を活用した、お問い合わせアラートシステムの開発
 
@@ -176,7 +176,7 @@ A1~E1 のセルを選択し、ツールバーの **テーブルとして書式�
 
 *テキストの翻訳* のアクション詳細設定で、**テキスト** には 動的コンテンツから *Html to Text* コネクターで抽出された **The plain text content** をクリックして選択します。**対象言語** は **English** を選択し、**詳細オプションを表示する** をクリックして詳細を設定します。
 
-> ネガポジ分析を行う上て、より精度の高い英語で分析するため、一旦メール本文を英語に翻訳します。
+> ネガポジ分析を行う上で、より精度の高い英語で分析するため、一旦メール本文を英語に翻訳します。
 
 <img src="media/LogicApps_20180625_30.PNG" width="450" height="291">  
 
@@ -355,7 +355,7 @@ Logic Apps デザイナー のツールバー の **▶実行** をクリック�
 Outlook のアドレス宛に、それ以外のメールアドレスからメールを送信します。
 
 - 件名 : お問い合わせ
-- 盆分 : 困っています。至急連絡ください (その他、ネガ判定となりそうな文章を入力)
+- 本文 : 困っています。至急連絡ください (その他、ネガ判定となりそうな文章を入力)
 
 <img src="media/LogicApps_20180625_63.PNG" width="450" height="291">  
 
