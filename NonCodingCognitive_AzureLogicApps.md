@@ -170,32 +170,35 @@ A1~E1 のセルを選択し、ツールバーの **テーブルとして書式�
 
 ### 6. メール本文のネガポジ判別(1): Microsoft Translator コネクターの設定
 
-※直接 Text Analyitics に接続する方法に変更いたします。
+※直接 Text Analyitics に接続する方法に変更いたします。(操作なし)
 
 ### 7. メール本文のネガポジ判別(2): テキスト分析 (Text analytics) コネクターの設定
 
 [**アクションの追加**] をクリックして、次のアクションを追加します。アクションの検索欄に **テキスト** と入力します。
 
-<img src="media/LogicApps_20180625_31.PNG" width="450" height="291">  
-<img src="media/LogicApps_20180625_32.PNG" width="450" height="291">  
+<img src="media/LogicApps_20200212_01.png" width="450" height="291">  
 
 次のアクションとして、**テキスト分析 - 感情の検出** を選択します。
 
-<img src="media/LogicApps_20180625_33.PNG" width="450" height="291">  
+<img src="media/LogicApps_20200212_02.png" width="450" height="291">  
 
-*テキスト分析 - 感情の検出* アクションの設定で以下の情報を入力します。
+*テキスト分析* の接続設定で以下の情報を入力します。
 
 - **接続名** : Text Analytics
 - **アカウントキー** : Text Analytics の API Key
 - **サイトのURL** : Text Analytics 申込時にロケーションに West US を選択した場合は未入力でOK、それ以外の場合は https://ロケーション名.api.cognitive.microsoft.com と入力
 
-[作成] をクリックして、*感情の検出* アクションを作成します。
+[作成] をクリックして、*テキスト分析 - 感情の検出* アクションを作成します。
 
-<img src="media/LogicApps_20180625_34.PNG" width="450" height="291">  
+<img src="media/LogicApps_20200212_03.png" width="450" height="291">  
 
-*テキスト分析 - 感情の検出* アクションの詳細設定で、**テキスト** には 動的コンテンツから **The plain text content** をクリックして選択します。
+*テキスト分析 - 感情の検出* アクションの詳細設定で、パラメーターを選択します。*パラーメーターの追加* をクリックし、表示される **テキスト** と **言語** のチェックボックスをクリックして ✔ (チェック) をつけます。
 
-<img src="media/LogicApps_20180625_35.PNG" width="450" height="291">  
+<img src="media/LogicApps_20200212_04.png" width="450" height="291">  
+
+**テキスト** には 動的コンテンツから **The plain text content** をクリックして選択、**言語** は **ja** を選択します。
+
+<img src="media/LogicApps_20200212_05.png" width="450" height="291">  
 
 <br />
 
